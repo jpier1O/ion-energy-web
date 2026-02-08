@@ -1,4 +1,4 @@
-import { Flag, HourlyInfo, RawInfo } from "./types";
+import type { Flag, HourlyInfo, RawInfo } from "./types";
 
 const MS_PER_HOUR = 60 * 60 * 1000;
 
@@ -37,8 +37,10 @@ function mergeFlag(a: Flag, b: Flag): Flag {
   return severity[a] >= severity[b] ? a : b;
 }
 
+type Key = `${string}|${string}`;
+
 export function processInfo(readings: RawInfo[]): HourlyInfo[] {
-  // group by meterId
+  // group by meter
   const byMeter = new Map<string, RawInfo[]>();
   for (const r of readings) {
     const arr = byMeter.get(r.meterId) ?? [];
@@ -46,15 +48,20 @@ export function processInfo(readings: RawInfo[]): HourlyInfo[] {
     byMeter.set(r.meterId, arr);
   }
 
-  const acc = new Map<string, HourlyInfo>();
+  const acc = new Map<Key, HourlyInfo>();
 
   for (const [meterId, meterReadings] of byMeter.entries()) {
+    // duplicate timestamps: discard duplicates
+    const sorted = [...meterReadings].sort(
+      (a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp)
+    );
+
+    const seen = new Set<string>();
     const deduped: RawInfo[] = [];
-    let lastTs: string | null = null;
-    for (const r of meterReadings) {
-      if (r.timestamp === lastTs) continue;
+    for (const r of sorted) {
+      if (seen.has(r.timestamp)) continue;
+      seen.add(r.timestamp);
       deduped.push(r);
-      lastTs = r.timestamp;
     }
 
     for (let i = 0; i < deduped.length - 1; i++) {
@@ -62,6 +69,8 @@ export function processInfo(readings: RawInfo[]): HourlyInfo[] {
       const curr = deduped[i + 1];
 
       let delta = curr.cumulativeVol - prev.cumulativeVol;
+      if (!Number.isFinite(delta)) delta = 0;
+
       let baseFlag: Flag = "normal";
 
       if (curr.cumulativeVol < prev.cumulativeVol) {
@@ -73,39 +82,49 @@ export function processInfo(readings: RawInfo[]): HourlyInfo[] {
       const endHour = toHourISO(curr.timestamp);
       const spanHours = diffHours(startHour, endHour);
 
+      // bucketing: assign delta to the hour of the previous reading
       if (spanHours <= 1) {
-        const key = `${meterId}|${startHour}`;
+        const key: Key = `${meterId}|${startHour}`;
         const existing = acc.get(key);
-        const next: HourlyInfo = existing
-          ? {
-              ...existing,
-              consumption: existing.consumption + delta,
-              flag: mergeFlag(existing.flag, baseFlag),
-            }
-          : { meterId, hour: startHour, consumption: delta, flag: baseFlag };
 
-        acc.set(key, next);
-      } else {
-        const perBucket = delta / spanHours;
-
-        const distributedFlag: Flag =
-          baseFlag === "counter_reset" ? "counter_reset" : "gap_estimated";
-
-        for (let h = 0; h < spanHours; h++) {
-          const hour = addHours(startHour, h);
-          const key = `${meterId}|${hour}`;
-          const existing = acc.get(key);
-
-          const next: HourlyInfo = existing
+        acc.set(
+          key,
+          existing
             ? {
                 ...existing,
-                consumption: existing.consumption + perBucket,
-                flag: mergeFlag(existing.flag, distributedFlag),
+                consumption: existing.consumption + delta,
+                flag: mergeFlag(existing.flag, baseFlag),
               }
-            : { meterId, hour, consumption: perBucket, flag: distributedFlag };
+            : { meterId, hour: startHour, consumption: delta, flag: baseFlag }
+        );
+        continue;
+      }
 
-          acc.set(key, next);
-        }
+      const perBucket = Number.isFinite(delta / spanHours) ? delta / spanHours : 0;
+
+      const distributedFlag: Flag =
+        baseFlag === "counter_reset" ? "counter_reset" : "gap_estimated";
+
+      for (let h = 0; h < spanHours; h++) {
+        const hour = addHours(startHour, h);
+        const key: Key = `${meterId}|${hour}`;
+        const existing = acc.get(key);
+
+        acc.set(
+          key,
+          existing
+            ? {
+              ...existing,
+              consumption: existing.consumption + perBucket,
+              flag: mergeFlag(existing.flag, distributedFlag),
+            }
+            : {
+              meterId,
+              hour,
+              consumption: perBucket,
+              flag: distributedFlag,
+            }
+        );
       }
     }
   }

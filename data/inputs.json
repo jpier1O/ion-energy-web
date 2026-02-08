@@ -7,161 +7,161 @@
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T09:05:00Z",
-		"cumulativeVolume": 10045
+		"cumulativeVol": 10045
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T10:03:00Z",
-		"cumulativeVolume": 10090
+		"cumulativeVol": 10090
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T11:07:00Z",
-		"cumulativeVolume": 10140
+		"cumulativeVol": 10140
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T12:01:00Z",
-		"cumulativeVolume": 10180
+		"cumulativeVol": 10180
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T13:04:00Z",
-		"cumulativeVolume": 10225
+		"cumulativeVol": 10225
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T14:02:00Z",
-		"cumulativeVolume": 10260
+		"cumulativeVol": 10260
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T15:06:00Z",
-		"cumulativeVolume": 10310
+		"cumulativeVol": 10310
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T16:03:00Z",
-		"cumulativeVolume": 10350
+		"cumulativeVol": 10350
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T17:01:00Z",
-		"cumulativeVolume": 10405
+		"cumulativeVol": 10405
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T18:04:00Z",
-		"cumulativeVolume": 10440
+		"cumulativeVol": 10440
 	},
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T19:02:00Z",
-		"cumulativeVolume": 10490
+		"cumulativeVol": 10490
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T08:05:00Z",
-		"cumulativeVolume": 52100
+		"cumulativeVol": 52100
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T09:03:00Z",
-		"cumulativeVolume": 52160
+		"cumulativeVol": 52160
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T10:07:00Z",
-		"cumulativeVolume": 52230
+		"cumulativeVol": 52230
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T14:02:00Z",
-		"cumulativeVolume": 52530
+		"cumulativeVol": 52530
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T15:08:00Z",
-		"cumulativeVolume": 52600
+		"cumulativeVol": 52600
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T16:01:00Z",
-		"cumulativeVolume": 52650
+		"cumulativeVol": 52650
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T17:05:00Z",
-		"cumulativeVolume": 52710
+		"cumulativeVol": 52710
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T18:03:00Z",
-		"cumulativeVolume": 52770
+		"cumulativeVol": 52770
 	},
 	{
 		"meterId": "MTR-002",
 		"timestamp": "2025-02-05T19:06:00Z",
-		"cumulativeVolume": 52840
+		"cumulativeVol": 52840
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T08:01:00Z",
-		"cumulativeVolume": 890120
+		"cumulativeVol": 890120
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T09:04:00Z",
-		"cumulativeVolume": 890200
+		"cumulativeVol": 890200
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T10:02:00Z",
-		"cumulativeVolume": 890265
+		"cumulativeVol": 890265
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T11:06:00Z",
-		"cumulativeVolume": 890340
+		"cumulativeVol": 890340
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T12:03:00Z",
-		"cumulativeVolume": 890410
+		"cumulativeVol": 890410
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T13:01:00Z",
-		"cumulativeVolume": 45
+		"cumulativeVol": 45
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T14:05:00Z",
-		"cumulativeVolume": 110
+		"cumulativeVol": 110
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T15:02:00Z",
-		"cumulativeVolume": 180
+		"cumulativeVol": 180
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T16:04:00Z",
-		"cumulativeVolume": 240
+		"cumulativeVol": 240
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T17:01:00Z",
-		"cumulativeVolume": 310
+		"cumulativeVol": 310
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T18:06:00Z",
-		"cumulativeVolume": 375
+		"cumulativeVol": 375
 	},
 	{
 		"meterId": "MTR-003",
 		"timestamp": "2025-02-05T19:03:00Z",
-		"cumulativeVolume": 450
+		"cumulativeVol": 450
 	}
 ]
