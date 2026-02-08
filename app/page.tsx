@@ -1,5 +1,6 @@
 import { MeterTable } from "@/components/MeterTable";
 import { MeterRow } from "@/components/MeterTable";
+import { SummaryOverview } from "@/components/SummaryOverview";
 import data from "@/data/inputs.json";
 import { processInfo } from "@/lib/processor";
 import type { RawInfo } from "@/lib/types";
@@ -40,6 +41,7 @@ export default function Home() {
   return (
     <main className="p-6 space-y-4">
       <h1 className="text-2xl font-semibold">Meter Telemetry Dashboard</h1>
+      <SummaryOverview hourly={hourly} />
       <MeterTable rows={rows} />
     </main>
   );
