@@ -1,17 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ion Energy – Meter Telemetry Dashboard
+
+Dashboard built with **Next.js (App Router) + TypeScript** that processes cumulative meter readings into **hourly consumption** and visualizes results.
+
+## Live Demo
+- Production: https://ion-energy-web.vercel.app/
+
+## Tech Stack
+- Next.js (App Router)
+- React + TypeScript
+- Recharts (charts)
+- Vitest (unit tests)
+
+## Requirements
+- Node.js >= 20 (Project is deployed using Node 24 on Vercel)
 
 ## Getting Started
 
-First, run the development server:
+### Install
+```bash
+npm install
+```
+
+# Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+
+
+# Run Tests
+
+```bash
+npm test
+```
+
+
+# Production Build
+
+```bash
+npm run build
+npm run start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
