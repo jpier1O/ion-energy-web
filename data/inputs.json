@@ -2,7 +2,7 @@
 	{
 		"meterId": "MTR-001",
 		"timestamp": "2025-02-05T08:02:00Z",
-		"cumulativeVolume": 10000
+		"cumulativeVol": 10000
 	},
 	{
 		"meterId": "MTR-001",
